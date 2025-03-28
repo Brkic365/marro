@@ -1,0 +1,225 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 4.5rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  place-content: space-between;
+  padding: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  .logoHolder {
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+    h3 {
+      color: white;
+      font-family: "Cinzel Decorative", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .links {
+    display: none;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+
+    li {
+      position: relative;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      transition: color 0.2s ease-in-out;
+
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60%;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      ul {
+        pointer-events: none;
+      }
+
+      &:hover ul {
+        display: flex;
+        pointer-events: auto;
+      }
+
+      // Add underline effect to all link items
+      > span {
+        position: relative;
+        padding-bottom: 2px;
+        display: inline-block;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 0;
+          background-color: white;
+          transition: width 0.3s ease-in-out;
+        }
+      }
+
+      &:hover > span::after {
+        width: 100%;
+      }
+    }
+
+    .dropdownToggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .linkLabel {
+      padding-bottom: 2px;
+      display: inline-block;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background-color: white;
+        transition: width 0.3s ease-in-out;
+      }
+    }
+
+    .linkLabel.active::after {
+      width: 100%;
+    }
+
+    .dropdown:hover .linkLabel::after {
+      width: 100%;
+    }
+  }
+
+  .dropdown {
+    ul {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      background-color: rgba(20, 20, 20, 0.98);
+      border-radius: 0.25rem;
+      z-index: 100;
+      min-width: 160px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      li {
+        color: white;
+        cursor: pointer;
+        white-space: nowrap;
+        padding: 0.5rem 1rem;
+        border-radius: 0;
+        transition: background-color 0.2s ease-in-out;
+
+        &:not(:last-child)::after {
+          display: none;
+        }
+
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        &:first-child {
+          border-radius: 0.25rem 0.25rem 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 0.25rem 0.25rem;
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+
+  .hamburger,
+  .closeHamburger {
+    z-index: 1000;
+    cursor: pointer;
+    width: 1.2rem;
+    height: 1.5rem;
+    margin-left: auto;
+
+    .line {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      margin-top: 5px;
+      border-radius: 1px;
+    }
+
+    .line:nth-child(2) {
+      transition: 0.15s ease-in-out;
+    }
+  }
+
+  .closeHamburger {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .nav {
+    justify-content: right;
+    padding: 1rem 10%;
+    display: flex;
+    align-items: center;
+    place-content: space-between;
+
+    .logoHolder {
+      position: relative;
+      left: 0;
+      transform: translateX(0%);
+    }
+
+    .links {
+      display: flex;
+    }
+
+    .hamburger,
+    .closeHamburger {
+      display: none;
+    }
+  }
+}

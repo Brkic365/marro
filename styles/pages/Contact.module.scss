@@ -1,0 +1,250 @@
+.contact {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    background-color: black;
+    height: 100vh;
+
+    .title {
+        z-index: 1;
+        position: relative;
+        .mainTitle {
+            font-family: "Cinzel Decorative", sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bgTopTitle {
+            font-family: "Cinzel Decorative", sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            position: absolute;
+            top: -2.75rem;
+            left: -1rem;
+            color: rgba(255, 255, 255, 0.1);
+        }
+
+        .bgBottomTitle {
+            font-family: "Cinzel Decorative", sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            position: absolute;
+            bottom: -2.75rem;
+            right: -1rem;
+            color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    .contactForm {
+        z-index: 1;
+        margin-top: 4rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 80%;
+        .contactInfo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            div {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                svg {
+                    color: white;
+                    opacity: 0.75;
+                }
+
+                p {
+                    font-family: "Mulish", sans-serif;
+                    color: white;
+                    opacity: 0.75;
+                }
+            }
+        }
+
+        form {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 0.5rem;
+            .twoInput {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                input {
+                    font-family: "Mulish", sans-serif;
+                    width: 100%;
+                    padding: 0.5rem;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    border-bottom: 1px solid white;
+                    color: white;
+                }
+            }
+
+            textarea {
+                font-family: "Mulish", sans-serif;
+                width: 100%;
+                padding: 0.5rem;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid white;
+                resize: none;
+                color: white;
+            }
+
+            button {
+                margin-top: 1rem;
+                width: 10rem;
+                border: none;
+                background-color: white;
+                outline: none;
+                color: black;
+                padding: 0.5rem;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                cursor: pointer;
+                transition: transform 0.2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                &:active {
+                    transform: scale(0.95);
+                }
+
+                p {
+                    font-family: "Mulish", sans-serif;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .contact {
+        margin-top: 8rem;
+        .title {
+            .mainTitle {
+                font-size: 3.5rem;
+            }
+    
+            .bgTopTitle {
+                font-size: 7rem;
+                top: -110%;
+                left: -35%;
+            }
+    
+            .bgBottomTitle {
+                font-size: 7rem;
+                bottom: -110%;
+                right: -35%;
+            }
+        }
+    
+        .contactForm {
+            margin-top: 5rem;
+            gap: 2rem;
+            width: 80%;
+            max-width: 40rem;
+            .contactInfo {
+                width: 50%;
+                gap: 1.25rem;
+                padding-bottom: 2rem;
+                div {
+                    gap: 0.75rem;
+                    svg {
+                        width: 1.25rem;
+                        height: 1.25rem;
+                    }
+
+                    p {
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+    
+            form {
+                gap: 1rem;
+                .twoInput {
+                    flex-direction: row;
+                    gap: 1rem;
+                    input {
+                        padding: 0.75rem;
+                        font-size: 1rem;
+                    }
+                }
+    
+                textarea {
+                    padding: 0.75rem;
+                    font-size: 1rem;
+                }
+    
+                button {
+                    margin-top: 1.5rem;
+                    padding: 0.75rem;
+                    p {
+                        font-size: 1rem;
+                    }
+                    
+                     svg {
+                         width: 1.1rem;
+                         height: 1.1rem;
+                     }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .contact {
+        margin-top: 10rem;
+        .title {
+            .mainTitle {
+                font-size: 5rem;
+            }
+
+            .bgTopTitle {
+                font-size: 10rem;
+            }
+
+            .bgBottomTitle {
+                font-size: 10rem;
+            }
+        }
+    
+        .contactForm {
+            margin-top: 7rem;
+            gap: 3rem;
+            .contactInfo {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+                padding-bottom: 3rem;
+            }
+        }
+    }
+}

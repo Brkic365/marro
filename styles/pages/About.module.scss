@@ -1,0 +1,60 @@
+.about {
+    min-height: 94vh;
+    padding: 5rem 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .aboutInfo {
+        max-width: 70rem;
+        width: 100%;
+
+        display: flex;
+        align-items: flex-start;
+        place-content: space-between;
+        flex-direction: column;
+
+        .left, .right {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 100%;
+
+            h4 {
+                font-family: "Mulish", sans-serif;
+                font-size: 1.4rem;
+                line-height: 150%;
+                font-weight: 500;
+                color: white;
+                margin-bottom: 1.5rem;
+            }
+
+            p, li {
+                font-family: "Mulish", sans-serif;
+                font-size: 0.9rem;
+                line-height: 150%;
+                font-weight: 500;
+                color: white;
+                margin-bottom: 1.5rem;
+
+                a {
+                    text-decoration: underline;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .about {
+        .aboutInfo {
+            flex-direction: row;
+
+            .left, .right {
+                width: 40%;
+            }
+        }
+    }
+}
