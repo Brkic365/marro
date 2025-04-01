@@ -207,7 +207,7 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
   const col3 = images.slice(col1Count + col2Count);
 
   return (
-    <main className={styles.servicePage} style={{ backgroundColor: "black" }}>
+    <main className={styles.servicePage}>
       <h1
         style={{
           background: `radial-gradient(circle, ${serviceProject.mainColor || "rgba(255, 255, 255, 0.5)"}, ${
