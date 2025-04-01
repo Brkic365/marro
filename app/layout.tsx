@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marro",
-  description: "Marro",
+  title: "BY MARRO",
+  description: "by marro",
 };
 
 export default function RootLayout({
@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <div className="grain" />
         <Navbar />
         {children}
         <Footer />

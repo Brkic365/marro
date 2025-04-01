@@ -23,7 +23,7 @@ function Footer() {
         <IoLogoFacebook />
         <IoLogoPinterest />
       </section>
-      <p>© marro 2025. All Rights Reserved.</p>
+      <p>© BY MARRO 2025. All Rights Reserved.</p>
     </section>
   );
 }

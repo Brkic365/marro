@@ -41,7 +41,7 @@ function Navbar() {
         <MobileMenu open={openMenu} setOpen={(open: boolean) => setOpenMenu(open)} />
 
         <section className={styles.logoHolder} onClick={() => router.push("/")}> 
-          <h3>marro</h3>
+          <h3>by marro</h3>
         </section>
 
         {/* Links with dropdowns */}

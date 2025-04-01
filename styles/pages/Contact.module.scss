@@ -9,7 +9,6 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    background-color: black;
     height: 100vh;
 
     .title {
@@ -18,7 +17,7 @@
         .mainTitle {
             font-family: "Cinzel Decorative", sans-serif;
             font-size: 2.75rem;
-            font-weight: 700;
+            font-weight: 500;
             color: white;
             position: relative;
             z-index: 2;
@@ -27,7 +26,7 @@
         .bgTopTitle {
             font-family: "Cinzel Decorative", sans-serif;
             font-size: 4rem;
-            font-weight: 700;
+            font-weight: 500;
             position: absolute;
             top: -2.75rem;
             left: -1rem;
@@ -37,7 +36,7 @@
         .bgBottomTitle {
             font-family: "Cinzel Decorative", sans-serif;
             font-size: 4rem;
-            font-weight: 700;
+            font-weight: 500;
             position: absolute;
             bottom: -2.75rem;
             right: -1rem;

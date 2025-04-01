@@ -10,9 +10,11 @@ interface Example {
     imagesDir: string;
     thumbnail: string;
     numImages: number;
-    mainColor: string;
+    mainColor?: string;
     secondaryColor?: string;
     bgColor?: string;
+    date?: Date;
+    location?: string;
   }
   
   interface ServiceType {
@@ -76,17 +78,13 @@ interface Example {
           imagesDir: "studio",
           thumbnail: "3.webp",
           numImages: 17,
-          mainColor: "#9F0007"
         },
         {
           name: "ivana",
           model: "ivana",
           imagesDir: "ivana",
           thumbnail: "8.webp",
-          numImages: 8,
-          mainColor: "#2b2b2b",
-          secondaryColor: "#131313",
-          bgColor: "black"
+          numImages: 8
         }
       ],
     },
@@ -101,9 +99,8 @@ interface Example {
           imagesDir: "lildrito",
           thumbnail: "11.webp",
           numImages: 15,
-          mainColor: "#2b2b2b",
-          secondaryColor: "#131313",
-          bgColor: "black"
+          date: new Date(2025, 3, 1),
+          location: "Tvornica Kulture, Zagreb"
         },
         {
           name: "lps",
@@ -111,9 +108,8 @@ interface Example {
           imagesDir: "lps",
           thumbnail: "1.webp",
           numImages: 20,
-          mainColor: "#015386",
-          secondaryColor: "#010201",
-          bgColor: "black"
+          date: new Date(2025, 3, 1),
+          location: "Cvetlicarna, Ljubljana"
         },
         {
           name: "nobru i matt shaft",
@@ -123,7 +119,9 @@ interface Example {
           numImages: 17,
           mainColor: "#BE5539",
           secondaryColor: "#110C0B",
-          bgColor: "black"
+          bgColor: "black",
+          date: new Date(2025, 3, 1),
+          location: "Mocvara, Zagreb"
         },
         {
           name: "silente",
@@ -133,7 +131,9 @@ interface Example {
           numImages: 13,
           mainColor: "#0D7497",
           secondaryColor: "#030305",
-          bgColor: "black"
+          bgColor: "black",
+          date: new Date(2025, 3, 1),
+          location: "Trg Petra Zoranica, Zadar"
         },
       ]
     },  
@@ -148,7 +148,6 @@ interface Example {
           imagesDir: "krstenje-eva",
           thumbnail: "20.webp",
           numImages: 26,
-          mainColor: "#9A8163"
         },
         {
           name: "christening",
@@ -156,7 +155,6 @@ interface Example {
           imagesDir: "krstenje-ljupka",
           thumbnail: "1.webp",
           numImages: 6,
-          mainColor: "#9A8163"
         },
         {
           name: "engagement",
@@ -164,8 +162,6 @@ interface Example {
           imagesDir: "engagement",
           thumbnail: "2.webp",
           numImages: 4,
-          mainColor: "#472432",
-          secondaryColor: "#8C6F66"
         },
       ]
     }
@@ -214,7 +210,7 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
     <main className={styles.servicePage} style={{ backgroundColor: "black" }}>
       <h1
         style={{
-          background: `radial-gradient(circle, ${serviceProject.mainColor}, ${
+          background: `radial-gradient(circle, ${serviceProject.mainColor || "rgba(255, 255, 255, 0.5)"}, ${
             serviceProject.secondaryColor || "#131313"
           })`,
           WebkitBackgroundClip: "text",
@@ -225,6 +221,13 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
       >
         {serviceProject.name}
       </h1>
+      {
+        serviceProject.location && serviceProject.date &&
+        <section className={styles.info}>
+          <p className={styles.location}>{serviceProject.location.toLocaleUpperCase()}</p>
+          <p className={styles.date}>{serviceProject.date?.toDateString().toLocaleUpperCase()}</p>
+        </section>
+      }
       <section className={styles.imageGallery}>
         <div className={styles.column}>
           {col1.map((img, index) => (
