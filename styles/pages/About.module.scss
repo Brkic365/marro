@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
 
 .about {
     min-height: 94vh;
-    padding: 5rem 2rem;
+    padding: 7rem 2rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     .aboutInfo {
-        max-width: 70rem;
+        max-width: 80rem;
         width: 100%;
 
         display: flex;
@@ -57,7 +57,7 @@
             flex-direction: row;
 
             .left, .right {
-                width: 40%;
+                width: 45%;
             }
         }
     }

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
+// Breakpoint variable (optional but good practice)
+$breakpoint-md: 768px;
 
 .home {
     padding: 5rem 2rem;
@@ -13,27 +15,26 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
+        margin-bottom: 5rem; // Add some space below services
 
         .service {
             width: 100%;
             aspect-ratio: 1/1;
-            max-width: 30rem;
-        
+            max-width: 30%; // This makes them small on mobile, consider adjusting
+
             background-image: url("/images/services/portraits/ivana/5.webp");
             background-size: cover;
             background-position: center;
-        
+
             display: flex;
             align-items: center;
             justify-content: center;
-        
+
             user-select: none;
-        
             transition: opacity 0.2s ease-in-out;
-        
             cursor: pointer;
-            position: relative; // Required for ::before to be positioned correctly
-        
+            position: relative; // Required for ::before
+
             &::before {
                 content: '';
                 position: absolute;
@@ -42,83 +43,110 @@
                 z-index: 1;
                 transition: background-color 0.3s ease;
             }
-        
+
             &:hover::before {
                 background-color: rgba(0, 0, 0, 0); // Remove overlay on hover
             }
-        
-            // Ensure content appears above the dark overlay
-            * {
+
+            * { // Ensure content appears above the dark overlay
                 position: relative;
                 z-index: 2;
             }
-        
+
             &:nth-child(2) {
                 background-image: url("/images/services/familyPhotos/engagement/4.webp");
             }
-        
+
             &:nth-child(3) {
                 background-image: url("/images/services/concerts/lps/14.webp");
             }
-        
+
             h1 {
                 color: white;
-                font-family: "Cinzel Decorative", sans-serif;
-                font-size: 2.5rem;
-                font-weight: 500;
+                font-family: "Mulish", serif;
+                font-size: 2rem; // Adjust initial size
+                font-weight: 400;
+                text-align: center; // Ensure text centers nicely
+            }
+
+            // Responsive adjustments for service blocks
+            @media (max-width: ($breakpoint-md - 1px)) {
+               max-width: 80%; // Make them larger on mobile if desired
+               &:not(:last-child) {
+                 margin-bottom: 1rem; // Stack them better on mobile
+               }
+            }
+
+            @media (min-width: $breakpoint-md) {
+                max-width: 30%; // Back to 3 per row layout on larger screens
+                h1 {
+                    font-size: 2.5rem; // Larger font on desktop
+                }
             }
         }
-        
     }
 
     .gallery {
-        margin: 0 auto;
-        margin-top: 10rem;
+        margin: 0 auto; // Use margin for centering instead of justify-self
+        // margin-top: 10rem; // Keep or adjust as needed
         display: grid;
-        gap: 1.5rem;
-        max-width: 90rem;
-      
-        .galleryItem {
-          position: relative;
-          width: 100%;
-          aspect-ratio: 4 / 3;
-          cursor: pointer;
-          overflow: hidden;
-      
-          img {
-            object-fit: cover;
-            transition: opacity 0.2s ease-in-out;
+        gap: 1rem; // Mobile gap
+        max-width: 90rem; // Max container width
 
-            &:hover {
-                opacity: 0.5;
+        // --- Mobile Layout (Default) ---
+        // Default to 2 columns for the general case on mobile
+        grid-template-columns: repeat(2, 1fr);
+
+        .galleryItem {
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            overflow: hidden;
+
+             // Default aspect ratio for 2-col mobile items
+            aspect-ratio: 1 / 1.25; // Or 4 / 3, choose what looks best
+
+            .image { // Target the Next Image component correctly
+                object-fit: cover;
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; // Smooth zoom/fade
+
+                &:hover {
+                    // opacity: 0.8; // Slight fade on hover
+                    transform: scale(1.05); // Subtle zoom effect
+                }
             }
-          }
+
+            // --- Mobile: First 4 Items ---
+            // Target items 1 through 4
+            &:nth-child(-n + 4) {
+                grid-column: 1 / -1; // Span full width (across the 2 columns)
+                aspect-ratio: 16 / 9; // Wider aspect ratio for full-width items
+            }
         }
-      
-        .fullRow {
-          grid-column: 1 / -1;
-          width: 100%;
-          max-width: 50rem;
-          aspect-ratio: 16 / 9;
-          justify-self: center;
-      
-          @media (max-width: 768px) {
-            aspect-ratio: 4 / 3;
-          }
+
+        // --- Larger Screen Layout ---
+        @media (min-width: $breakpoint-md) {
+            // Use a 6-column base grid for flexibility (LCM of 2 and 3)
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem; // Larger gap for desktop
+
+            .galleryItem {
+                // --- Desktop: First 4 Items (2 per row) ---
+                &:nth-child(-n + 4) {
+                    grid-column: span 3; // Each item spans 3 of 6 columns = 2 per row
+                    aspect-ratio: 4 / 3; // Aspect ratio for these items
+                }
+
+                // --- Desktop: Remaining Items (3 per row) ---
+                &:nth-child(n + 5) {
+                    grid-column: span 2; // Each item spans 2 of 6 columns = 3 per row
+                    aspect-ratio: 1 / 1.25; // Aspect ratio for these items (adjust if needed)
+                }
+            }
         }
-      
-        .gridItem {
-          @media (min-width: 768px) {
-            aspect-ratio: 1 / 1.25;
-          }
-        }
-      
-        @media (min-width: 768px) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      
-      .modal {
+    }
+
+    .modal {
         width: 100%;
         height: 100%;
         position: fixed;
@@ -129,22 +157,19 @@
         align-items: center;
         justify-content: center;
         cursor: zoom-out;
-      
-        .modalImage {
-          object-fit: contain;
-          max-width: 90vw;
-          max-height: 90vh;
-          width: auto !important;
-          height: auto !important;
-        }
-      }
-      
-      
+        padding: 1rem; // Add padding for safety
+
+        // No style needed for modalImage class if using inline styles on the component
+        // .modalImage {
+        //     // Styles moved inline for next/image v13+ compatibility
+        // }
+    }
 }
 
-@media screen and (min-width: 900px) {
+// Keep your existing media query for general .home padding/margins if needed
+@media screen and (min-width: 900px) { // Or use $breakpoint-md or a new variable
     .home {
-        padding-top: 15%;
+        padding-top: 10%; // Reduced from 15% maybe?
         .services {
             gap: 2rem;
             .service {
@@ -155,7 +180,7 @@
         }
 
         .gallery {
-            margin-top: 15rem;
+            margin-top: 10rem; // Reduced from 15rem maybe?
         }
     }
 }

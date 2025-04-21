@@ -17,8 +17,8 @@ function Service({basePath, service, number}: {basePath: string, service: any, n
           <div className={styles.image} style={{background: `url("/images/services/${basePath}/${service.imagesDir}/${service.thumbnail}")`}} />
           <section className={styles.details}>
             <section className={styles.left}>
-              <h4>{service.name}</h4>
-              <p>{service.model}</p>
+              {service.name && <h4>{service.name.toLocaleUpperCase()}</h4>}
+              <p>{basePath === "portraits" && "MODEL: "}{service.model.toLocaleUpperCase()}</p>
             </section>
             {/*<HiOutlineArrowNarrowRight />*/}
           </section>

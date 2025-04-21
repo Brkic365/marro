@@ -8,20 +8,37 @@ function About() {
       <section className={styles.aboutInfo}>
         <section className={styles.left}>
           <h4>About</h4>
-          <p>I am a British photographer based in Worcestershire, England, specialising in documentary and landscape photography. In 2013, during a trip to Istanbul, Turkey, I discovered my passion for capturing my surroundings through my camera. My work blends traditional documentary techniques with contemporary visual approaches.<br /><br/>My work has been recognised in several notable publications and competitions, including Source, British Journal of Photography, Eye Festival, Aberystwyth Art Centre Gallery, Guernsey Photography Festival, Open Doors Gallery and the British Culture Archive.<br /><br />With over 100,000 followers on social media, I have reached millions of people over the past year. My journey in photography continues to evolve, fuelled by a dedication to both artistic and documentary pursuits.</p>
+          <p>Hello! My name is  Marija Kolovrat, or as most know me in the photography world, BY 
+            MARRO - a freelance photographer and creative director based in Zagreb, Croatia. 
+            Photography has been my way of telling stories - honest, emotional, and deeply 
+            personal. My passion for capturing moments began long before I picked up a camera in 
+            2018, and ever since, {"I’ve"} been drawn to the beauty of human connection and emotions 
+            that shape our experiences.<br />
+            I specialize in artistic and creative portraits, carefully planning and directing each shoot 
+            to bring unique visions to life. Beyond portraits, I find joy in documenting {"life’s"} raw, 
+            fleeting moments—whether {"it’s"} the quiet intimacy between loved ones or the unfiltered 
+            energy of a live concert. Family photography holds a special place in my work, as I love 
+            capturing the milestones and connections that define our lives, from pregnancies and 
+            christenings to engagements and couple shoots. These moments are filled with 
+            emotion, and I strive to preserve them in an authentic and timeless way. <br />
+            As much as I love capturing families and couples, my other passion lies in 
+            photographing music and performance, where movement and emotion merge in a way 
+            that feels almost electric. Music has always been a source of inspiration for me, shaping 
+            both my creative vision and the way I approach storytelling through the lens.<br /> 
+            In 2023, I created my photo book Melankolija as part of my final graduation project, 
+            exploring emotion and introspection through portraiture. My work has also been 
+            exhibited at the Faculty of Graphic Arts.<br /> 
+            I love meeting new people and capturing the emotions, connections, and small 
+            interactions that make every story unique. If {"you’re"} looking for someone to document 
+            your moments with an artistic touch, feel free to reach out!</p>
           <h4>Education</h4>
-          <p>2015-2018 BA in Documentary Photography,<br />University of South Wales, Cardiff/Newport, UK.</p>
+          <p>2020 {"–"} 2025 Faculty of Graphic Arts,<br />University of Zagreb, Croatia</p>
         </section>
         <section className={styles.right}>
-          <h4>Selected Publications & Nominations</h4>
+          <h4>Achievements</h4>
           <ul>
-            <li>2018 - <Link href="/">Source Graduate Award.</Link></li>
-            <li>2018 - British Journal of {"Photography’s"} Portrait of Britain - <Link href="/">Click Here to find out more.</Link></li>
-            <li>2018 - Selected Photos displayed in Eye Festival, Aberystwyth Art Centre Gallery and Guernsey Photography Festival. </li>
-            <li>2020 - Finalist in <Link href="/">Open Doors Gallery {"‘Home’"} Competition.</Link></li>
-            <li>2020 - Selected Image featured in <Link href="/">Architectural Digest France</Link> - Online.</li>
-            <li>2023 - Nominated for Best Stills Photographer - BBC  Its My Shout Awards.</li>
-            <li>2023 - Selected Image featured in <Link href="/">British Culture Archive</Link> - Online.</li>
+            <li>2024 - Selected photos displayed in “Foto esej” student exhibition, Faculty of Graphic Arts</li>
+            <li>2025 - Selected photos displayed in Final photography student exhibition, Faculty of Graphic Arts</li>
           </ul>
         </section>
       </section>

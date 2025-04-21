@@ -41,7 +41,7 @@ function Navbar() {
         <MobileMenu open={openMenu} setOpen={(open: boolean) => setOpenMenu(open)} />
 
         <section className={styles.logoHolder} onClick={() => router.push("/")}> 
-          <h3>by marro</h3>
+          <h3>BY MARRO</h3>
         </section>
 
         {/* Links with dropdowns */}
@@ -102,8 +102,9 @@ function Navbar() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <li onClick={() => router.push("/")}>COMMISSION 1</li>
-                  <li onClick={() => router.push("/")}>COMISSION 2</li>
+                  <li onClick={() => router.push("/commission?q=melankolija")}>Melankolija</li>
+                  <li onClick={() => router.push("/commission?q=nowayout")}>No way out - foto esej</li>
+                  <li onClick={() => router.push("/commission?q=nobru")}>Artist Promo Shoot: nobru</li>
                 </motion.ul>
               )}
             </AnimatePresence>

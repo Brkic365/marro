@@ -6,14 +6,18 @@ import Service from "../components/Service";
 import { useSearchParams } from "next/navigation";
 
 interface Example {
-  name: string;
+  name?: string;
   model: string;
   imagesDir: string;
   thumbnail: string;
   numImages: number;
-  mainColor: string;
+  mainColor?: string;
   secondaryColor?: string;
   bgColor?: string;
+  date?: Date;
+  location?: string;
+  year?: string;
+  text?: string;
 }
 
 interface ServiceType {
@@ -30,64 +34,63 @@ const services: Record<string, ServiceType> = {
     background: "background.webp",
     examples: [
       {
-        name: "nature",
-        model: "dorotea",
+        name: "nespojivo",
+        model: "Nobru",
+        imagesDir: "nespojivo",
+        thumbnail: "8.webp",
+        numImages: 15,
+        year: "2024",
+        text: "\"Nespojivo\" explores the contrast between urban formality and nature. By blending the unexpected, it reflects the tension between social norms and our connection to nature. The series symbolizes the attempt to impose order to a world meant to be free, questioning where we truly belong."
+      },
+      {
+        model: "Dorotea pešun",
         imagesDir: "dorotea",
         thumbnail: "1.webp",
         numImages: 7,
         mainColor: "#A27547",
+        year: "2024"
+      },
+      {
+        model: "Ivana Meštrović",
+        imagesDir: "ivana",
+        thumbnail: "8.webp",
+        numImages: 8,
+        year: "2023"
+      },
+      {
+        model: "Ana Kolinger",
+        imagesDir: "studio",
+        thumbnail: "3.webp",
+        numImages: 17,
+        year: "2024"
+      },
+      {
+        name: "no way out",
+        model: "Ana Kolinger",
+        imagesDir: "no way out",
+        thumbnail: "13.webp",
+        numImages: 14,
+        year: "2024",
+        text: "“no way out” is a photo essay inspired by The Hunger Games soundtrack “Can’t Catch Me Now”. It weaves together lyrics, melody, and photographs to show a powerful message—every connection, whether love or friendship, leaves a lasting mark. No matter the distance, memories and emotions will always find their way back. "
+      },
+      {
+        model: "Nobru",
+        imagesDir: "nobru",
+        thumbnail: "2.webp",
+        numImages: 12,
+        mainColor: "#254B3E",
+        year: "2024"
       },
       {
         name: "introspekcija",
-        model: "ana kolinger",
+        model: "Ana Kolinger",
         imagesDir: "introspekcija",
         thumbnail: "3.webp",
         numImages: 10,
         mainColor: "#B57974",
-        secondaryColor: "#585765"
-      },
-      {
-        name: "nespojivo",
-        model: "ivan horvat",
-        imagesDir: "nespojivo",
-        thumbnail: "8.webp",
-        numImages: 15,
-        mainColor: "#675722",
-        secondaryColor: "#28200D",
-      },
-      {
-        name: "nobru",
-        model: "nobru",
-        imagesDir: "nobru",
-        thumbnail: "2.webp",
-        numImages: 12,
-        mainColor: "#254B3E"
-      },
-      {
-        name: "no way out",
-        model: "ana kolinger",
-        imagesDir: "no way out",
-        thumbnail: "13.webp",
-        numImages: 14,
-        mainColor: "#363A15"
-      },
-      {
-        name: "studio",
-        model: "ana kolinger",
-        imagesDir: "studio",
-        thumbnail: "3.webp",
-        numImages: 17,
-        mainColor: "#9F0007"
-      },
-      {
-        name: "ivana",
-        model: "ivana",
-        imagesDir: "ivana",
-        thumbnail: "8.webp",
-        numImages: 8,
-        mainColor: "#151515",
-        secondaryColor: "#080808",
-        bgColor: "black"
+        secondaryColor: "#585765",
+        year: "2025",
+        text: "“introspekcija” is a portrait series capturing serene, dreamlike moments of self-reflection and escape from reality. Blurring the line between dream and reality, the images evoke the sense of quietude and inner connection."
       }
     ],
   },
@@ -102,9 +105,8 @@ const services: Record<string, ServiceType> = {
         imagesDir: "lildrito",
         thumbnail: "11.webp",
         numImages: 15,
-        mainColor: "#151515",
-        secondaryColor: "#080808",
-        bgColor: "black"
+        date: new Date(2025, 3, 1),
+        location: "Tvornica Kulture, Zagreb"
       },
       {
         name: "lps",
@@ -112,9 +114,8 @@ const services: Record<string, ServiceType> = {
         imagesDir: "lps",
         thumbnail: "1.webp",
         numImages: 20,
-        mainColor: "#015386",
-        secondaryColor: "#010201",
-        bgColor: "black"
+        date: new Date(2025, 3, 1),
+        location: "Cvetlicarna, Ljubljana"
       },
       {
         name: "nobru i matt shaft",
@@ -124,7 +125,9 @@ const services: Record<string, ServiceType> = {
         numImages: 17,
         mainColor: "#BE5539",
         secondaryColor: "#110C0B",
-        bgColor: "black"
+        bgColor: "black",
+        date: new Date(2025, 3, 1),
+        location: "Mocvara, Zagreb"
       },
       {
         name: "silente",
@@ -134,7 +137,9 @@ const services: Record<string, ServiceType> = {
         numImages: 13,
         mainColor: "#0D7497",
         secondaryColor: "#030305",
-        bgColor: "black"
+        bgColor: "black",
+        date: new Date(2025, 3, 1),
+        location: "Trg Petra Zoranica, Zadar"
       },
     ]
   },  
@@ -149,7 +154,6 @@ const services: Record<string, ServiceType> = {
         imagesDir: "krstenje-eva",
         thumbnail: "20.webp",
         numImages: 26,
-        mainColor: "#9A8163"
       },
       {
         name: "christening",
@@ -157,7 +161,6 @@ const services: Record<string, ServiceType> = {
         imagesDir: "krstenje-ljupka",
         thumbnail: "1.webp",
         numImages: 6,
-        mainColor: "#9A8163"
       },
       {
         name: "engagement",
@@ -165,8 +168,6 @@ const services: Record<string, ServiceType> = {
         imagesDir: "engagement",
         thumbnail: "2.webp",
         numImages: 4,
-        mainColor: "#472432",
-        secondaryColor: "#8C6F66"
       },
     ]
   }
@@ -188,7 +189,7 @@ function ServicesContent() {
           backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("/images/services/${service.basePath}/${service.background}")`,
         }}
       >
-        <h1>{service.name}</h1>
+        <h1>{service.name.toLocaleUpperCase()}</h1>
         <section className={styles.servicesList}>
           {service.examples.map((example, index) => (
             <Service key={index} basePath={service.basePath} service={example} number={index + 1} />

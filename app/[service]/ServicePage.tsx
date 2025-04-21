@@ -5,7 +5,7 @@ import styles from "@/styles/pages/Service.module.scss";
 import { useSearchParams } from "next/navigation";
 
 interface Example {
-    name: string;
+    name?: string;
     model: string;
     imagesDir: string;
     thumbnail: string;
@@ -15,6 +15,8 @@ interface Example {
     bgColor?: string;
     date?: Date;
     location?: string;
+    year?: string;
+    text?: string;
   }
   
   interface ServiceType {
@@ -31,60 +33,63 @@ interface Example {
       background: "background.webp",
       examples: [
         {
-          name: "nature",
-          model: "dorotea",
+          name: "nespojivo",
+          model: "Nobru",
+          imagesDir: "nespojivo",
+          thumbnail: "8.webp",
+          numImages: 15,
+          year: "2024",
+          text: "\"Nespojivo\" explores the contrast between urban formality and nature. By blending the unexpected, it reflects the tension between social norms and our connection to nature. The series symbolizes the attempt to impose order to a world meant to be free, questioning where we truly belong."
+        },
+        {
+          model: "Dorotea pešun",
           imagesDir: "dorotea",
           thumbnail: "1.webp",
           numImages: 7,
           mainColor: "#A27547",
+          year: "2024"
+        },
+        {
+          model: "Ivana Meštrović",
+          imagesDir: "ivana",
+          thumbnail: "8.webp",
+          numImages: 8,
+          year: "2023"
+        },
+        {
+          model: "Ana Kolinger",
+          imagesDir: "studio",
+          thumbnail: "3.webp",
+          numImages: 17,
+          year: "2024"
+        },
+        {
+          name: "no way out",
+          model: "Ana Kolinger",
+          imagesDir: "no way out",
+          thumbnail: "13.webp",
+          numImages: 14,
+          year: "2024",
+          text: "“no way out” is a photo essay inspired by The Hunger Games soundtrack “Can’t Catch Me Now”. It weaves together lyrics, melody, and photographs to show a powerful message—every connection, whether love or friendship, leaves a lasting mark. No matter the distance, memories and emotions will always find their way back. "
+        },
+        {
+          model: "Nobru",
+          imagesDir: "nobru",
+          thumbnail: "2.webp",
+          numImages: 12,
+          mainColor: "#254B3E",
+          year: "2024"
         },
         {
           name: "introspekcija",
-          model: "ana kolinger",
+          model: "Ana Kolinger",
           imagesDir: "introspekcija",
           thumbnail: "3.webp",
           numImages: 10,
           mainColor: "#B57974",
-          secondaryColor: "#585765"
-        },
-        {
-          name: "nespojivo",
-          model: "ivan horvat",
-          imagesDir: "nespojivo",
-          thumbnail: "8.webp",
-          numImages: 15,
-          mainColor: "#675722",
-          secondaryColor: "#28200D",
-        },
-        {
-          name: "nobru",
-          model: "nobru",
-          imagesDir: "nobru",
-          thumbnail: "2.webp",
-          numImages: 12,
-          mainColor: "#254B3E"
-        },
-        {
-          name: "no way out",
-          model: "ana kolinger",
-          imagesDir: "no way out",
-          thumbnail: "13.webp",
-          numImages: 14,
-          mainColor: "#363A15"
-        },
-        {
-          name: "studio",
-          model: "ana kolinger",
-          imagesDir: "studio",
-          thumbnail: "3.webp",
-          numImages: 17,
-        },
-        {
-          name: "ivana",
-          model: "ivana",
-          imagesDir: "ivana",
-          thumbnail: "8.webp",
-          numImages: 8
+          secondaryColor: "#585765",
+          year: "2025",
+          text: "“introspekcija” is a portrait series capturing serene, dreamlike moments of self-reflection and escape from reality. Blurring the line between dream and reality, the images evoke the sense of quietude and inner connection."
         }
       ],
     },
@@ -208,7 +213,9 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
 
   return (
     <main className={styles.servicePage}>
-      <h1
+      {
+        serviceProject.name &&       
+        <h1
         style={{
           background: `radial-gradient(circle, ${serviceProject.mainColor || "rgba(255, 255, 255, 0.5)"}, ${
             serviceProject.secondaryColor || "#131313"
@@ -219,14 +226,12 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
           fontSize: `calc(100vw/${serviceProject.name.length})`
         }}
       >
-        {serviceProject.name}
+        {serviceProject.name.toLocaleUpperCase()}
       </h1>
+      }
       {
-        serviceProject.location && serviceProject.date &&
-        <section className={styles.info}>
-          <p className={styles.location}>{serviceProject.location.toLocaleUpperCase()}</p>
-          <p className={styles.date}>{serviceProject.date?.toDateString().toLocaleUpperCase()}</p>
-        </section>
+        serviceParam === "portraits" && serviceProject.text &&
+        <p className={styles.description}>{serviceProject.text}</p>
       }
       <section className={styles.imageGallery}>
         <div className={styles.column}>
@@ -245,6 +250,20 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
           ))}
         </div>
       </section>
+      {
+        serviceParam === "portraits" && 
+        <section className={styles.info}>
+          <p>Model: {serviceProject.model}</p>
+          <p>{serviceProject.year}</p>
+        </section>
+      }
+      {
+        serviceParam === "concerts" && serviceProject.location && serviceProject.date &&
+        <section className={styles.info}>
+          <p className={styles.location}>{serviceProject.location.toLocaleUpperCase()}</p>
+          <p className={styles.date}>{serviceProject.date?.toDateString().toLocaleUpperCase()}</p>
+        </section>
+      }
     </main>
   );
 };

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
 .service {
     width: 100%;
@@ -9,7 +9,7 @@
     gap: 1rem;
 
     h2 {
-        font-family: "Cinzel Decorative", sans-serif;
+        font-family: "Mulish", serif;;
         font-size: 3rem;
         font-weight: 400;
         color: white;
@@ -62,14 +62,14 @@
                 transition: transform 0.2s ease-in-out;
 
                 h4 {
-                    font-family: "Cinzel Decorative", sans-serif;
+                    font-family: "Mulish", serif;;
                     font-size: 1.25rem;
                     font-weight: 400;
                     color: white;
                 }
     
                 p {
-                    font-family: "Cinzel Decorative", sans-serif;
+                    font-family: "Mulish", serif;;
                     font-size: 0.8rem;
                     font-weight: 400;
                     color: rgba(255, 255, 255, 0.75)
