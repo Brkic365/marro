@@ -101,8 +101,9 @@ function MobileMenu({ open, setOpen }: MenuProps) {
               </div>
               {commissionsOpen && (
                 <ul className={styles.dropdownMobile}>
-                  <li onClick={() => handleNavigate("/commissions/paintings")}>PAINTINGS</li>
-                  <li onClick={() => handleNavigate("/commissions/custom")}>CUSTOM WORK</li>
+                  <li onClick={() => router.push("/commission?q=melankolija")}>Melankolija</li>
+                  <li onClick={() => router.push("/commission?q=nowayout")}>No way out - foto esej</li>
+                  <li onClick={() => router.push("/commission?q=nobru")}>Artist Promo Shoot: nobru</li>
                 </ul>
               )}
             </li>
