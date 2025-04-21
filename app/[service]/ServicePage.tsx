@@ -217,8 +217,8 @@ export default function ServicePage({ serviceParam }: {serviceParam: string}) {
         serviceProject.name &&       
         <h1
         style={{
-          background: `radial-gradient(circle, ${serviceProject.mainColor || "rgba(255, 255, 255, 0.5)"}, ${
-            serviceProject.secondaryColor || "#131313"
+          background: `radial-gradient(circle, ${serviceProject.mainColor || "rgba(255, 255, 255, 0.7)"}, ${
+            serviceProject.secondaryColor || "rgba(255, 255, 255, 0.2)"
           })`,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
