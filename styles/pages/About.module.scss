@@ -1,64 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
+// /styles/pages/About.module.scss
 
+// Define base text color if not already globally defined
+$text-color: #e0e0e0;
+$heading-color: #fff;
+$secondary-text-color: #cccccc;
 
 .about {
-    min-height: 94vh;
-    padding: 7rem 2rem;
+  padding: 8rem 2rem 5rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  min-height: 80vh;
+  color: $text-color;
+}
 
+.aboutInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.left {
+  flex: 1 1 60%;
+  min-width: 320px;
+
+  h4 {
+    font-family: "Vollkorn", serif; // Or your heading font variable
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $heading-color;
+    margin-bottom: 1.5rem; // Add margin below the main "About" heading
+    margin-top: 2rem;
+    letter-spacing: 0.05em;
+
+    &:first-of-type { // Target the first h4 ("About")
+      margin-top: 0; // No top margin needed for the very first heading
+      margin-bottom: 1.5rem; // Ensure space below it before the flex container
+    }
+  }
+
+  p {
+    font-family: "Mulish", sans-serif; // Or your body font variable
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $secondary-text-color;
+    margin-bottom: 1.5rem; // Standard margin for paragraphs
+  }
+}
+
+// --- New Flex Container for Intro ---
+.introFlexContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 2rem; // Space between image and text
+    align-items: flex-start; // Align items to the top
+    margin-bottom: 1.5rem; // Space after the intro block before next paragraph
 
-    .aboutInfo {
-        max-width: 80rem;
-        width: 100%;
-
-        display: flex;
-        align-items: flex-start;
-        place-content: space-between;
-        flex-direction: column;
-
-        .left, .right {
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            width: 100%;
-
-            h4 {
-                font-family: "Mulish", sans-serif;
-                font-size: 1.4rem;
-                line-height: 150%;
-                font-weight: 500;
-                color: white;
-                margin-bottom: 1.5rem;
-            }
-
-            p, li {
-                font-family: "Mulish", sans-serif;
-                font-size: 0.9rem;
-                line-height: 150%;
-                font-weight: 500;
-                color: white;
-                margin-bottom: 1.5rem;
-
-                a {
-                    text-decoration: underline;
-                    outline: none;
-                }
-            }
-        }
+    @media (max-width: 767px) {
+        flex-direction: column; // Stack image above text on mobile
+        align-items: center; // Center items when stacked
+        gap: 1.5rem;
     }
 }
 
-@media screen and (min-width: 900px) {
-    .about {
-        .aboutInfo {
-            flex-direction: row;
+// --- Styles for the Profile Image ---
+.profileImageWrapper {
+  flex: 0 0 280px; // Fixed width for the image column, adjust as needed (e.g., 250px, 300px)
+  width: 280px; // Ensure width is set
+  overflow: hidden; // Keep this
+  // Remove border-radius
+  // Remove margin-bottom (handled by parent container gap/margin)
+  // Remove centering styles (handled by flex)
+  // Remove box-shadow (optional, add back if desired)
+  // background-color: #222; // Optional subtle background
 
-            .left, .right {
-                width: 45%;
-            }
-        }
+  @media (max-width: 767px) {
+      flex-basis: auto; // Allow it to size naturally in column layout
+      width: 80%; // Limit width on mobile
+      max-width: 300px; // Add a max-width as well
+  }
+}
+
+.profileImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  // Remove border-radius: inherit;
+}
+
+// --- Wrapper for the intro text beside the image ---
+.introText {
+    flex: 1; // Allows the text to take remaining space
+    min-width: 0; // Prevents text overflow issues in flexbox
+
+    p {
+        margin-bottom: 0; // Remove bottom margin if it's the only paragraph in this block
     }
+}
+
+
+// --- Right Section (Mostly unchanged, styling included for completeness) ---
+.right {
+  flex: 1 1 35%;
+  min-width: 280px;
+
+  h4 {
+    font-family: "Vollkorn", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $heading-color;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    font-family: "Mulish", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $secondary-text-color;
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      color: $heading-color;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// --- Responsive Adjustments (Keep or adjust) ---
+@media (max-width: 767px) {
+  .about {
+    padding: 6rem 1rem 4rem;
+  }
+
+  .aboutInfo {
+    gap: 2rem;
+  }
+
+  .left h4, .right h4 {
+    font-size: 1.3rem;
+  }
+
+  // Target paragraphs *not* inside the introText specifically if needed
+  .left > p, .right li {
+      font-size: 0.95rem;
+  }
+  .introText p { // Style intro paragraph specifically if needed
+      font-size: 0.95rem;
+  }
 }
