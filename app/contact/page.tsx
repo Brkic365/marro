@@ -10,10 +10,10 @@ function Contact() {
     <main className={styles.contact}>
         <section className={styles.title}>
           <h1 className={styles.mainTitle}>
-            contact me
+            CONTACT ME
           </h1>
-          <h1 className={styles.bgTopTitle}>{"let's"}</h1>
-          <h1 className={styles.bgBottomTitle}>{"work"}</h1>
+          <h1 className={styles.bgTopTitle}>{"LET'S"}</h1>
+          <h1 className={styles.bgBottomTitle}>{"WORK"}</h1>
         </section>
         <section className={styles.contactForm}>
           <section className={styles.contactInfo}>
