@@ -10,6 +10,8 @@ function Service({basePath, service, number}: {basePath: string, service: any, n
 
   const router = useRouter();
 
+  console.log(basePath, service);
+
   return (
     <section className={styles.service} style={{flexDirection: number % 2 == 0 ? "row-reverse": "row", marginLeft: number % 2 == 0 ? "auto": "0"}}
               onClick={() => router.push(`/${basePath}?q=${number}`)}>
@@ -18,7 +20,7 @@ function Service({basePath, service, number}: {basePath: string, service: any, n
           <section className={styles.details}>
             <section className={styles.left}>
               {service.name && <h4>{service.name.toLocaleUpperCase()}</h4>}
-              <p>{basePath === "portraits" && "MODEL: "}{service.model.toLocaleUpperCase()}</p>
+              <p>{basePath === "portraits" && "MODEL: "}{service.model && service.model.toLocaleUpperCase()}</p>
             </section>
             {/*<HiOutlineArrowNarrowRight />*/}
           </section>

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
 import styles from "@/styles/components/MobileMenu.module.scss";
 
@@ -15,7 +15,9 @@ function MobileMenu({ open, setOpen }: MenuProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [animationFinished, setAnimationFinished] = useState(false);
+
   const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const [commissionsOpen, setCommissionsOpen] = useState(false);
 
   const menuVariants = {
@@ -89,6 +91,25 @@ function MobileMenu({ open, setOpen }: MenuProps) {
               )}
             </li>
 
+            <li onClick={() => setProjectsOpen(!projectsOpen)}>
+              <div className={styles.dropdownToggle}>
+                <span>PROJECTS</span>
+                <motion.span
+                  animate={{ rotate: projectsOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FaChevronDown size={14} />
+                </motion.span>
+              </div>
+              {projectsOpen && (
+                <ul className={styles.dropdownMobile}>
+                  <li onClick={() => handleNavigate("/projects?q=melankolija")}>Melankolija</li>
+                  <li onClick={() => handleNavigate("/projects?q=nowayout")}>No way out - foto esej</li>
+                  <li onClick={() => handleNavigate("/projects?q=nobru")}>Artist Promo Shoot: nobru</li>
+                </ul>
+              )}
+            </li>
+
             <li onClick={() => setCommissionsOpen(!commissionsOpen)}>
               <div className={styles.dropdownToggle}>
                 <span>COMMISSIONS</span>
@@ -101,9 +122,10 @@ function MobileMenu({ open, setOpen }: MenuProps) {
               </div>
               {commissionsOpen && (
                 <ul className={styles.dropdownMobile}>
-                  <li onClick={() => handleNavigate("/commission?q=melankolija")}>Melankolija</li>
-                  <li onClick={() => handleNavigate("/commission?q=nowayout")}>No way out - foto esej</li>
-                  <li onClick={() => handleNavigate("/commission?q=nobru")}>Artist Promo Shoot: nobru</li>
+                  <li onClick={() => router.push("/commissions?q=beautymakeup")}>Beauty & Makeup</li>
+                  <li onClick={() => router.push("/commissions?q=gospodin-savrseni")}>Gospodin Savršeni</li>
+                  <li onClick={() => router.push("/commissions?q=lelosi")}>LELOSI</li>
+                  <li onClick={() => router.push("/commissions?q=schape")}>Schapé Design</li>
                 </ul>
               )}
             </li>

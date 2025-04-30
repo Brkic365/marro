@@ -16,9 +16,11 @@ function Navbar() {
   const [lastScrollY, setLastScrollY] = useState<number>(0);
 
   const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const [commissionsOpen, setCommissionsOpen] = useState(false);
 
   const isPortfolio = pathname.startsWith("/portfolio");
+  const isProjects = pathname.startsWith("/projects");
   const isCommissions = pathname.startsWith("/commissions");
 
   useEffect(() => {
@@ -81,6 +83,38 @@ function Navbar() {
 
           <li
             className={styles.dropdown}
+            onMouseEnter={() => setProjectsOpen(true)}
+            onMouseLeave={() => setProjectsOpen(false)}
+          >
+            <div className={styles.dropdownToggle}>
+                <span className={`${styles.linkLabel} ${isProjects ? styles.active : ""}`}>PROJECTS</span>
+                <motion.span
+                    animate={{ rotate: projectsOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <FaChevronDown size={12} />
+                </motion.span>
+            </div>
+            <AnimatePresence>
+              {projectsOpen && (
+                <motion.ul
+                  className={styles.dropdownContent}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <li onClick={() => router.push("/projects?q=melankolija")}>Melankolija</li>
+                  <li onClick={() => router.push("/projects?q=nowayout")}>No way out - foto esej</li>
+                  <li onClick={() => router.push("/projects?q=nobru")}>Artist Promo Shoot: nobru</li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
+          </li>
+
+
+          <li
+            className={styles.dropdown}
             onMouseEnter={() => setCommissionsOpen(true)}
             onMouseLeave={() => setCommissionsOpen(false)}
           >
@@ -102,9 +136,10 @@ function Navbar() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <li onClick={() => router.push("/commission?q=melankolija")}>Melankolija</li>
-                  <li onClick={() => router.push("/commission?q=nowayout")}>No way out - foto esej</li>
-                  <li onClick={() => router.push("/commission?q=nobru")}>Artist Promo Shoot: nobru</li>
+                  <li onClick={() => router.push("/commissions?q=beautymakeup")}>Beauty & Makeup</li>
+                  <li onClick={() => router.push("/commissions?q=gospodin-savrseni")}>Gospodin Savršeni</li>
+                  <li onClick={() => router.push("/commissions?q=lelosi")}>LELOSI</li>
+                  <li onClick={() => router.push("/commissions?q=schape")}>Schapé Design</li>
                 </motion.ul>
               )}
             </AnimatePresence>

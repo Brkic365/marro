@@ -22,7 +22,7 @@ $breakpoint-md: 768px;
             aspect-ratio: 1/1;
             max-width: 30%; // This makes them small on mobile, consider adjusting
 
-            background-image: url("/images/services/portraits/ivana/5.webp");
+            background-image: url("/images/services/portraits/ivana/1.jpg");
             background-size: cover;
             background-position: center;
 
@@ -54,16 +54,16 @@ $breakpoint-md: 768px;
             }
 
             &:nth-child(2) {
-                background-image: url("/images/services/familyPhotos/engagement/4.webp");
+                background-image: url("/images/services/familyPhotos/pregnancy/27.jpg");
             }
 
             &:nth-child(3) {
-                background-image: url("/images/services/concerts/lps/14.webp");
+                background-image: url("/images/services/concerts/lps/1.jpg");
             }
 
             h1 {
                 color: white;
-                font-family: "Mulish", serif;
+                font-family: "Cormorant Garamond", serif;
                 font-size: 2rem; // Adjust initial size
                 font-weight: 400;
                 text-align: center; // Ensure text centers nicely
@@ -80,7 +80,7 @@ $breakpoint-md: 768px;
             @media (min-width: $breakpoint-md) {
                 max-width: 30%; // Back to 3 per row layout on larger screens
                 h1 {
-                    font-size: 2.5rem; // Larger font on desktop
+                    font-size: 2.1rem; // Larger font on desktop
                 }
             }
         }
@@ -174,13 +174,27 @@ $breakpoint-md: 768px;
             gap: 2rem;
             .service {
                 h1 {
-                    font-size: 3.5rem;
+                    font-size: 2.5rem;
                 }
             }
         }
 
         .gallery {
             margin-top: 10rem; // Reduced from 15rem maybe?
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) { 
+    .home {
+        padding-top: 10%;
+        .services {
+            gap: 2rem;
+            .service {
+                h1 {
+                    font-size: 3rem;
+                }
+            }
         }
     }
 }

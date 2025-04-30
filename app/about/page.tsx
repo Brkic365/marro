@@ -16,7 +16,7 @@ function About() {
           <div className={styles.introFlexContainer}>
             <div className={styles.profileImageWrapper}>
               <Image
-                src="/images/me.webp"
+                src="/images/aboutme/1.jpg"
                 alt="Photo of Marija Kolovrat"
                 width={300}  // Adjust width - maybe slightly smaller
                 height={375} // Adjust height based on new width & aspect ratio

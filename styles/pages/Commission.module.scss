@@ -1,103 +1,80 @@
-// /styles/pages/Commission.module.scss
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
+
 
 .commissionPage {
-    padding: 8rem 2rem 5rem; // Adjust top padding for navbar, bottom for footer etc.
-    max-width: 75rem; // Max width for single commission content
-    margin: 0 auto;
-    min-height: 80vh;
-    color: #e0e0e0;
-  }
-  
-  .contentWrapper {
+    width: 100%;
+
     display: flex;
-    flex-direction: column; // Text above image on mobile
-    gap: 2.5rem;
-  
-    @media (min-width: 900px) { // Switch to side-by-side on larger screens
-      flex-direction: row;
-      gap: 4rem;
-      align-items: flex-start; // Align items to the top
-    }
-  }
-  
-  .textWrapper {
-    flex: 1 1 45%; // Takes up slightly less than half the space on desktop
-    order: 1; // Text comes first in source order
-  
-    @media (min-width: 900px) {
-       order: 0; // Text can still come first visually if needed, or adjust flex order
-       padding-right: 2rem; // Add space between text and image
-    }
-  }
-  
-  .imageWrapper {
-    flex: 1 1 55%; // Takes up slightly more space on desktop
-    position: relative;
-    overflow: hidden;
-    order: 0; // Image comes second in source order
-  
-    @media (min-width: 900px) {
-       order: 1;
-    }
-  
-    .commissionImage {
-      display: block;
-      border-radius: var(--radius-sm, 4px); // Smaller radius might look good
-      // Maybe add a subtle border or shadow if desired
-      // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-  }
-  
-  
-  .title {
-    font-family: "Vollkorn", serif; // Or your preferred heading font
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: #fff;
-    line-height: 1.3;
-    letter-spacing: 0.03em;
-  
-     @media (max-width: 767px) {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-     }
-  }
-  
-  .text {
-    font-family: "Mulish", sans-serif; // Or your body font
-    font-size: 1rem;
-    line-height: 1.8; // Generous line height for readability
-    color: #cccccc;
-  
-    a.externalLink {
-      color: #8ab4f8; // Consistent link color
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s ease;
-      display: inline-block;
-      margin-top: 1rem;
-      font-weight: 500;
-  
-      &:hover {
-        color: #a7c7fc;
-      }
-    }
-  
-    @media (max-width: 767px) {
-        font-size: 0.95rem;
-        line-height: 1.7;
-     }
-  }
-  
-  // Loading and Not Found States
-  .loading,
-  .notFound {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 70vh; // Take up significant screen space
-    font-size: 1.5rem;
-    color: #aaa;
-    font-family: "Mulish", sans-serif;
-  }
+    flex-direction: column;
+    padding: 5rem 1rem;
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: calc(100vw / 11);
+        text-align: center;
+        font-family: "Mulish", serif;
+        font-weight: 500;
+        
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        @media screen and (min-width: 800px) {
+          font-size: 6rem;
+        }
+
+        @media screen and (min-width: 1400px) {
+          font-size: 10rem;
+        }
+    }
+    
+    .imageGallery {
+      display: flex;
+      gap: 1rem; /* Space between columns */
+      width: 100%;
+      max-width: 100rem;
+      margin: 0 auto;
+      margin-top: 2rem;
+  
+      .column {
+          margin-top: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          width: 33.33%; /* Each column takes 1/3 of the space */
+      }
+
+      .column:nth-child(1) {
+        margin-top: 5rem;
+      }
+
+      .column:nth-child(3) {
+        margin-top: 8rem;
+      }
+  
+      img {
+          width: 100%; /* Make images fit within the column */
+          height: auto; /* Maintain aspect ratio */
+          object-fit: cover;
+      }
+  
+      @media (max-width: 768px) {
+          flex-direction: column; /* Switch to 1 column on smaller screens */
+          .column {
+              width: 100%;
+          }
+
+          .column:nth-child(1) {
+            margin-top: 0;
+          }
+    
+          .column:nth-child(3) {
+            margin-top: 0;
+          }
+      }
+  } 
+}
