@@ -23,6 +23,7 @@ function Navbar() {
   const isProjects = pathname.startsWith("/projects");
   const isCommissions = pathname.startsWith("/commissions");
 
+  /*
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= lastScrollY) {
@@ -36,6 +37,7 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+  */
 
   return (
     <Suspense>

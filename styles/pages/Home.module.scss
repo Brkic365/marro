@@ -18,9 +18,9 @@ $breakpoint-md: 768px;
         margin-bottom: 5rem; // Add some space below services
 
         .service {
-            width: 100%;
+            width: 70%;
             aspect-ratio: 1/1;
-            max-width: 30%; // This makes them small on mobile, consider adjusting
+            max-width: 100%; // This makes them small on mobile, consider adjusting
 
             background-image: url("/images/services/portraits/ivana/1.jpg");
             background-size: cover;
@@ -69,9 +69,16 @@ $breakpoint-md: 768px;
                 text-align: center; // Ensure text centers nicely
             }
 
+            @media (max-width: 350px) {
+                h1 {
+                    font-size: 1.5rem;
+                }
+             }
+
             // Responsive adjustments for service blocks
             @media (max-width: ($breakpoint-md - 1px)) {
-               max-width: 80%; // Make them larger on mobile if desired
+               max-width: min(90%, 20rem); // Make them larger on mobile if desired
+               aspect-ratio: 1.2/1;
                &:not(:last-child) {
                  margin-bottom: 1rem; // Stack them better on mobile
                }
